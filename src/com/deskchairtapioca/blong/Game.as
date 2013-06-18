@@ -13,23 +13,33 @@ package com.deskchairtapioca.blong
 	public class Game
 	{
 		
-		public function Game(stage:Stage) 
+		public function Game(stage:Stage,objectList:Vector.<GameObject>) 
 		{
-			//test music goes here temporarily
+			/*//test music goes here temporarily
 			[Embed(source = "../../../../lib/paralysis_of_analysis.mp3")]
 			var MySound:Class; 		 
 			var sound:Sound; 
 			sound = (new MySound) as Sound; 			     
-			sound.play(); 
+			sound.play(); */
 			
 			var paddle1:PlayerPaddle = new PlayerPaddle();
 			stage.addChild(paddle1);
 			paddle1.x = 100;
+			paddle1.y = 350;
+			objectList.push(paddle1);
+			
+			
+			var testBlock:GameObject = new GameObject();
+			stage.addChild(testBlock);
+			testBlock.x = 100;
+			testBlock.y = 10;
+			objectList.push(testBlock);
 			
 			var paddle2:PlayerPaddle = new PlayerPaddle();
 			stage.addChild(paddle2);
 			paddle2.x = 300;
-			
+			paddle2.y = 350;
+			objectList.push(paddle2);
 			
 		}
 		

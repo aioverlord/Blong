@@ -4,6 +4,7 @@ package com.deskchairtapioca.blong
 	import flash.display.Stage;
 	import flash.events.*;
 	import com.deskchairtapioca.blong.Input;
+	import flash.geom.Rectangle;
 	
 	
 	[SWF(backgroundColor="0x000000",frameRate="30")]
@@ -16,6 +17,7 @@ package com.deskchairtapioca.blong
 	{
 		protected var lastTime:Date = new Date();
 		protected var input:Input;
+		protected var objectList:Vector.<GameObject> = new Vector.<GameObject>;
 		
 		public function Main():void 
 		{
@@ -34,7 +36,7 @@ package com.deskchairtapioca.blong
 			stage.addEventListener(KeyboardEvent.KEY_UP, input.OnKeyUp);
 			
 			//initialize the game
-			var game:Game = new Game(stage);
+			var game:Game = new Game(stage,objectList);
 			stage.addEventListener(Event.ENTER_FRAME, Update);
 			//stage.addEventListener(Event.ENTER_FRAME, EventTest);
 			
@@ -51,14 +53,14 @@ package com.deskchairtapioca.blong
 			lastTime = new Date();
 			//trace(delta);
 			
-			stage.dispatchEvent(new UpdateFrameEvent(UpdateFrameEvent.UPDATE_FRAME, delta, input.pressedKeys));
+			stage.dispatchEvent(new UpdateFrameEvent(UpdateFrameEvent.UPDATE_FRAME, delta, input.pressedKeys, objectList));
 			
 			//dispatch the event from every child of the stage
 			//will not loop through children of children
 			for (var i:uint = 0; i < stage.numChildren; i++) 
 			{
 				//TO DO: make sure the events aren't coming back to the stage on every iteration
-				stage.getChildAt(i).dispatchEvent(new UpdateFrameEvent(UpdateFrameEvent.UPDATE_FRAME, delta, input.pressedKeys));
+				stage.getChildAt(i).dispatchEvent(new UpdateFrameEvent(UpdateFrameEvent.UPDATE_FRAME, delta, input.pressedKeys, objectList));
 			}
 		}
 		

@@ -7,28 +7,33 @@ package com.deskchairtapioca.blong
 	 * The update is simply based on keyboard input.
 	 * @author Gleb Vorobjev
 	 */
-	public class PlayerPaddle extends GameObject 
+	public class PlayerPaddle extends Paddle 
 	{
-		//movement speed in pixels per millisecond
-		protected static const MOVE_SPEED:Number = 1/5;
 		
 		public function PlayerPaddle() 
 		{
 			addEventListener(UpdateFrameEvent.UPDATE_FRAME, PlayerPaddleUpdate)
 		}
 		
-		public function PlayerPaddleUpdate(customEvent:UpdateFrameEvent):void
+		public function PlayerPaddleUpdate(updateFrameEvent:UpdateFrameEvent):void
 		{
-			if (customEvent.pressedKeys[Keyboard.W] || customEvent.pressedKeys[Keyboard.UP])
-			{
-				this.y -= MOVE_SPEED * customEvent.delta;
-			}
-			if (customEvent.pressedKeys[Keyboard.S] || customEvent.pressedKeys[Keyboard.DOWN])
-			{
-				this.y += MOVE_SPEED * customEvent.delta;
-			}
 			
+				if (updateFrameEvent.pressedKeys[Keyboard.W] || updateFrameEvent.pressedKeys[Keyboard.UP])
+				{
+					this.moveDirection.y = -1;
+					this.AttemptMovePaddle(updateFrameEvent);
+					this.moveDirection.y = 0;
+				}
+				if (updateFrameEvent.pressedKeys[Keyboard.S] || updateFrameEvent.pressedKeys[Keyboard.DOWN])
+				{
+					this.moveDirection.y = +1;
+					this.AttemptMovePaddle(updateFrameEvent);
+					this.moveDirection.y = 0;
+				}
+			
+				//trace(this.getRect(stage));
 		}
+		
 		
 	}
 
