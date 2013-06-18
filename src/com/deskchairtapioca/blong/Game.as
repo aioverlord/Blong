@@ -22,6 +22,11 @@ package com.deskchairtapioca.blong
 			sound = (new MySound) as Sound; 			     
 			sound.play(); */
 			
+			var ball1:Ball = new Ball();
+			stage.addChild(ball1);
+			ball1.x = 700;
+			ball1.y = 350;
+			
 			var paddle1:PlayerPaddle = new PlayerPaddle();
 			stage.addChild(paddle1);
 			paddle1.x = 100;
@@ -40,6 +45,15 @@ package com.deskchairtapioca.blong
 			paddle2.x = 300;
 			paddle2.y = 350;
 			objectList.push(paddle2);
+			
+			var upperWall:Wall = new Wall();
+			stage.addChild(upperWall);
+			objectList.push(upperWall);
+			
+			var lowerWall:Wall = new Wall();
+			stage.addChild(lowerWall);
+			lowerWall.y = 710;
+			objectList.push(lowerWall);
 			
 		}
 		

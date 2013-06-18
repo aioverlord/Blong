@@ -17,7 +17,7 @@ package com.deskchairtapioca.blong
 			graphics.endFill();
 			
 			//movement speed in pixels per millisecond
-			this.moveSpeed = 1/5;
+			this.moveSpeed = 1/2;
 		}
 		
 		protected function AttemptMovePaddle(updateFrameEvent:UpdateFrameEvent):void

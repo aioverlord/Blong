@@ -15,7 +15,7 @@ package com.deskchairtapioca.blong
 			addEventListener(UpdateFrameEvent.UPDATE_FRAME, PlayerPaddleUpdate)
 		}
 		
-		public function PlayerPaddleUpdate(updateFrameEvent:UpdateFrameEvent):void
+		protected function PlayerPaddleUpdate(updateFrameEvent:UpdateFrameEvent):void
 		{
 			
 				if (updateFrameEvent.pressedKeys[Keyboard.W] || updateFrameEvent.pressedKeys[Keyboard.UP])
@@ -31,7 +31,6 @@ package com.deskchairtapioca.blong
 					this.moveDirection.y = 0;
 				}
 			
-				//trace(this.getRect(stage));
 		}
 		
 		

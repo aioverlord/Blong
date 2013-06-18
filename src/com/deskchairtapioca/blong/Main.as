@@ -7,7 +7,7 @@ package com.deskchairtapioca.blong
 	import flash.geom.Rectangle;
 	
 	
-	[SWF(backgroundColor="0x000000",frameRate="30")]
+	[SWF(backgroundColor="0x000000",frameRate="60",width="1280",height="720")]
 	
 	/**
 	 * ...
@@ -51,7 +51,7 @@ package com.deskchairtapioca.blong
 			var currentTime:Date = new Date();
 			var delta:Number = currentTime.getTime() - lastTime.getTime();
 			lastTime = new Date();
-			//trace(delta);
+			//trace(int(1/delta*1000));
 			
 			stage.dispatchEvent(new UpdateFrameEvent(UpdateFrameEvent.UPDATE_FRAME, delta, input.pressedKeys, objectList));
 			
